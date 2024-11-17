@@ -13,8 +13,8 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
     private Node tail;
 
     public HandOverHandListBasedSetOptimized() {
-        head = new Node(Integer.MIN_VALUE);
-        tail = new Node(Integer.MAX_VALUE);
+        head = new Node(Integer.MIN_VALUE, true);
+        tail = new Node(Integer.MAX_VALUE, false);
         head.next = tail;
     }
 
@@ -40,7 +40,7 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
                 if (curr.key == item) {
                     return false;
                 } else {
-                    Node node = new Node(item);
+                    Node node = new Node(item, false);
                     node.next = curr;
                     pred.next = node;
                     return true;
@@ -115,9 +115,10 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
     }
 
     private static class Node {
-        Node(int item) {
+        Node(int item, Boolean generalLock) {
             key = item;
             next = null;
+            lock = new CustomLock(generalLock);
         }
 
         public void lock() {
@@ -131,11 +132,24 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
         public int key;
         public Node next;
 
-        private final Lock lock = new ReentrantLock();
+        private CustomLock lock = null;
     }
 
-    private static class SimpleLock {
+    private static class CustomLock {
+        CustomLock(Boolean general) {
+            if (general) {
+                generalLock = new ReentrantLock();
+            } else {
+                isLocked = new AtomicBoolean(false);
+            }
+        }
+
         public void lock() {
+            if (generalLock != null) {
+                generalLock.lock();
+                return;
+            }
+
             while (isLocked.get()) {
                 Thread.yield();
             }
@@ -143,16 +157,22 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
         }
 
         public void unlock() {
+            if (generalLock != null) {
+                generalLock.unlock();
+                return;
+            }
+
             isLocked.set(false);
         }
 
-        private final AtomicBoolean isLocked = new AtomicBoolean(false);
+        private Lock generalLock = null;
+        private AtomicBoolean isLocked = null;
     }
 
     @Override
     public void clear() {
-        head = new Node(Integer.MIN_VALUE);
-        head.next = new Node(Integer.MAX_VALUE);
+        head = new Node(Integer.MIN_VALUE, true);
+        head.next = new Node(Integer.MAX_VALUE, false);
     }
 
     /**
