@@ -20,6 +20,8 @@ esac
 echo "Who I am: $OUTPUT on $(uname -n)"
 echo "started on" "$(date)"
 
+touch results.csv
+
 for t in 1 4 6 8 10 12
 do
 	for ur in 0 10 100
@@ -32,7 +34,10 @@ do
       echo "list size: $ls"
       r=$((ls * 2))
       echo "range: $r"
-      java -cp bin contention.benchmark.Test -b linkedlists.lockbased.$OUTPUT -d 2000 -t $t -u $ur -i $ls -r $r -W 0 | grep Throughput
+      tp=$(java -cp bin contention.benchmark.Test -b linkedlists.lockbased.$OUTPUT -d 2000 -t $t -u $ur -i $ls -r $r -W 0 | grep Throughput)
+      echo "$tp"
+      tpn=$(echo $tp | awk -F ':' '{print $NF}')
+      echo "$OUTPUT;$t;$ur;$ls;$r;$tpn" >> results.csv
   #		echo "→ $OUTPUT	$i	$j	without -W 0"
   #		java -cp bin contention.benchmark.Test -b linkedlists.lockbased.$OUTPUT -d 3000 -t $i -u $j -i 1024 -r 2048 | grep Throughput
 	  done
