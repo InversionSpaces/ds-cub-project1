@@ -1,0 +1,328 @@
+CoarseGrainedListBasedSet
+Who I am: CoarseGrainedListBasedSet on MacBook-Pro-Stanislau.local
+started on Sun Nov 17 21:02:30 CET 2024
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	8087066.666666668
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	981913.5864135865
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	31353.146853146856
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	7323892.874937718
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	923573.639540689
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	30601.898101898107
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 100
+list size: 100
+range: 200
+  Throughput (ops/s):       	4351788.135593221
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	706507.9760717847
+→ CoarseGrainedListBasedSet
+threads: 1
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29500.000000000004
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	5672878.170064644
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	719777.390438247
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	30303.04543185222
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	5081295.760598504
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	646584.2864246643
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29677.788844621515
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 100
+list size: 100
+range: 200
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	545786.1069465268
+→ CoarseGrainedListBasedSet
+threads: 4
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	28289.77556109726
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	5393074.129353235
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	705766.3178873941
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	30463.876432486297
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	5019529.061102832
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	642634.5481777333
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29569.865738438584
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 100
+list size: 100
+range: 200
+  Throughput (ops/s):       	3013314.115308151
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	573110.945273632
+→ CoarseGrainedListBasedSet
+threads: 6
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	27392.928286852588
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	5304607.160616608
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	702454.9975136748
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29417.53861484803
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	4908076.616915423
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	643880.9167912307
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29300.748129675812
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 100
+list size: 100
+range: 200
+  Throughput (ops/s):       	2997215.246636771
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	572326.7031327697
+→ CoarseGrainedListBasedSet
+threads: 8
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	27487.549800796813
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	5579329.692154916
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	709430.6315266036
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	30488.04780876494
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	4963159.068384539
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	622256.844201095
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29347.93429566949
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 100
+list size: 100
+range: 200
+  Throughput (ops/s):       	3009048.1867858917
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	572253.5908865775
+→ CoarseGrainedListBasedSet
+threads: 10
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	26844.433399602385
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 0
+list size: 100
+range: 200
+  Throughput (ops/s):       	5493556.880278192
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 0
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	719130.2834410741
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 0
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	30709.80587356894
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 10
+list size: 100
+range: 200
+  Throughput (ops/s):       	4859729.756582215
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 10
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	617529.5285359801
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 10
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	29224.438902743143
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 100
+list size: 100
+range: 200
+  Throughput (ops/s):       	2999927.0109235356
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 100
+list size: 1000
+range: 2000
+  Throughput (ops/s):       	567907.6923076923
+→ CoarseGrainedListBasedSet
+threads: 12
+update ratio: 100
+list size: 10000
+range: 20000
+  Throughput (ops/s):       	26676.79282868526
+finished on Sun Nov 17 21:08:54 CET 2024
+DONE \o/
