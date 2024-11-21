@@ -2,19 +2,18 @@ package linkedlists.lockbased;
 
 import contention.abstractions.AbstractCompositionalIntSet;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntSet {
 
     // sentinel nodes
-    private Node head;
-    private Node tail;
+    private Node<GeneralLock> head;
+    private Node<SimpleLock> tail;
 
     public HandOverHandListBasedSetOptimized() {
-        head = new Node(Integer.MIN_VALUE, true);
-        tail = new Node(Integer.MAX_VALUE, false);
+        head = Node.general(Integer.MIN_VALUE);
+        tail = Node.simple(Integer.MAX_VALUE);
         head.next = tail;
     }
 
@@ -26,8 +25,8 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
     @Override
     public boolean addInt(int item) {
         head.lock();
-        Node pred = head;
-        Node curr = head.next;
+        Node<?> pred = head;
+        Node<?> curr = head.next;
         try {
             curr.lock();
             try {
@@ -40,7 +39,7 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
                 if (curr.key == item) {
                     return false;
                 } else {
-                    Node node = new Node(item, false);
+                    Node<?> node = Node.simple(item);
                     node.next = curr;
                     pred.next = node;
                     return true;
@@ -61,8 +60,8 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
     @Override
     public boolean removeInt(int item) {
         head.lock();
-        Node pred = head;
-        Node curr = head.next;
+        Node<?> pred = head;
+        Node<?> curr = head.next;
         try {
             curr.lock();
             try {
@@ -94,8 +93,8 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
     @Override
     public boolean containsInt(int item) {
         head.lock();
-        Node pred = head;
-        Node curr = head.next;
+        Node<?> pred = head;
+        Node<?> curr = head.next;
         try {
             curr.lock();
             try {
@@ -114,11 +113,19 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
         }
     }
 
-    private static class Node {
-        Node(int item, Boolean generalLock) {
+    private static class Node<L extends ISimpleLock> {
+        Node(int item, L lock_) {
             key = item;
             next = null;
-            lock = new CustomLock(generalLock);
+            lock = lock_;
+        }
+
+        public static Node<SimpleLock> simple(int item) {
+            return new Node<>(item, new SimpleLock());
+        }
+
+        public static Node<GeneralLock> general(int item) {
+            return new Node<>(item, new GeneralLock());
         }
 
         public void lock() {
@@ -130,49 +137,47 @@ public class HandOverHandListBasedSetOptimized extends AbstractCompositionalIntS
         }
 
         public int key;
-        public Node next;
+        public Node<?> next;
 
-        private CustomLock lock = null;
+        private final L lock;
     }
 
-    private static class CustomLock {
-        CustomLock(Boolean general) {
-            if (general) {
-                generalLock = new ReentrantLock();
-            } else {
-                isLocked = new AtomicBoolean(false);
-            }
-        }
+    interface ISimpleLock {
+        void lock();
+        void unlock();
+    }
 
+    private static class SimpleLock implements ISimpleLock {
         public void lock() {
-            if (generalLock != null) {
-                generalLock.lock();
-                return;
+            while (isLocked) {
+                Thread.onSpinWait();
             }
-
-            while (isLocked.get()) {
-                Thread.yield();
-            }
-            isLocked.set(true);
+            isLocked = true;
         }
 
         public void unlock() {
-            if (generalLock != null) {
-                generalLock.unlock();
-                return;
-            }
-
-            isLocked.set(false);
+            isLocked = false;
         }
 
-        private Lock generalLock = null;
-        private AtomicBoolean isLocked = null;
+        private volatile Boolean isLocked = false;
+    }
+
+    private static class GeneralLock implements ISimpleLock {
+        private final Lock lock = new ReentrantLock();
+
+        public void lock() {
+            lock.lock();
+        }
+
+        public void unlock() {
+            lock.unlock();
+        }
     }
 
     @Override
     public void clear() {
-        head = new Node(Integer.MIN_VALUE, true);
-        head.next = new Node(Integer.MAX_VALUE, false);
+        head = Node.general(Integer.MIN_VALUE);
+        head.next = Node.simple(Integer.MAX_VALUE);
     }
 
     /**
